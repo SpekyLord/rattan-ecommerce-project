@@ -185,4 +185,4 @@ This project is for educational purposes as part of a web development course.
 
 
 ## 📞 Contact
-For questions or issues, contact the team lead: [[Your contact info](https://www.facebook.com/francisgabriel.austria/)]
+For questions or issues, contact the team lead: [[Facebook](https://www.facebook.com/francisgabriel.austria/)]
