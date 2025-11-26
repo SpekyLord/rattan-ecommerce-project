@@ -1,1 +1,0 @@
-# rattan-ecommerce-project
