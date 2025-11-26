@@ -82,7 +82,7 @@ cd rattan-ecommerce-project
 ```
 
 2. **Set Up Server**
-- Move project to `htdocs/` (XAMPP) or `www/` (Laragon)
+- Move project to `htdocs/` (XAMPP)
 - Start Apache
 
 3. **Set Up Aiven Database**
