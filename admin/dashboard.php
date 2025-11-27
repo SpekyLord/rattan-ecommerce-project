@@ -32,52 +32,12 @@ $pending_orders = $stmt->fetch()['total'];
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php">🇵🇭 Rattan Crafts Admin</a>
-            <div class="navbar-nav ms-auto">
-                <span class="navbar-text me-3">
-                    Welcome, <?= htmlspecialchars($_SESSION['admin_username']) ?>!
-                </span>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="dashboard.php">
-                                📊 Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="products_manage.php">
-                                📦 Manage Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_add.php">
-                                ➕ Add New Product
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="orders_manage.php">
-                                🛒 Manage Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.php" target="_blank">
-                                🌐 View Website
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <?php include 'sidebar.php'; ?>
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

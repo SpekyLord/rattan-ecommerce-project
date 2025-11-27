@@ -29,43 +29,17 @@ $success = isset($_GET['success']) ? $_GET['success'] : '';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php">🇵🇭 Rattan Crafts Admin</a>
-            <div class="navbar-nav ms-auto">
-                <span class="navbar-text me-3">Welcome, <?= htmlspecialchars($_SESSION['admin_username']) ?>!</span>
-                <a href="logout.php" class="btn btn-outline-light btn-sm">Logout</a>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.php">📊 Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="products_manage.php">📦 Manage Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_add.php">➕ Add New Product</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="orders_manage.php">🛒 Manage Orders</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <?php include 'sidebar.php'; ?>
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Manage Products</h1>
-                    <a href="product_add.php" class="btn btn-primary">➕ Add New Product</a>
                 </div>
 
                 <?php if ($success == 'added'): ?>
