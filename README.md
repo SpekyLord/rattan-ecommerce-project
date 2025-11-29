@@ -58,7 +58,7 @@ rattan-ecommerce-project/
 │   ├── js/
 │   └── images/
 ├── config/
-│   └── db_config.template.php
+│   └── db_config.php
 └── database/
     └── schema.sql
 ```
