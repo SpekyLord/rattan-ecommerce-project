@@ -92,7 +92,7 @@ $success = isset($_GET['success']) ? $_GET['success'] : '';
                                 <tr>
                                     <td><?= $product['id'] ?></td>
                                     <td>
-                                        <img src="../<?= htmlspecialchars($product['image_path']) ?>" 
+                                        <img src="../assets/images/<?= htmlspecialchars($product['image_path']) ?>" 
                                              alt="Product" style="width: 50px; height: 50px; object-fit: cover;">
                                     </td>
                                     <td><?= htmlspecialchars($product['name']) ?></td>

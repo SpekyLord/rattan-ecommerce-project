@@ -21,9 +21,9 @@
         ?>
         <div class="col-md-4 mb-4">
             <div class="card">
-                <img src="<?= htmlspecialchars($product['image_path']) ?>" 
-                     class="card-img-top" alt="<?= htmlspecialchars($product['name']) ?>">
-                <div class="card-body">
+            <img src="/rattan-ecommerce-project/assets/images/<?= htmlspecialchars($product['image_path']) ?>" 
+            class="card-img-top" alt="<?= htmlspecialchars($product['name']) ?>" style="object-fit: cover;">
+                <div class="card-body"> 
                     <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
                     <p class="card-text">₱<?= number_format($product['price'], 2) ?></p>
                     <span class="badge <?= $product['stock'] > 0 ? 'bg-success' : 'bg-danger' ?>">
