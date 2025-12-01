@@ -139,9 +139,9 @@ $result = mysqli_query($conn, $query);
                                 <td><span class="<?= $status_class ?>"><?= ucfirst($row['status']) ?></span></td>
                                 <td>
                                     <?php if ($row['status'] == "pending"): ?>
-                                        <a href="orders_manage.php?complete_id=<?= $row['id'] ?>" class="btn btn-sm btn-success">Mark Completed</a>
+                                        <a href="orders_manage.php?complete_id=<?= $row['id'] ?>" class="btn btn-sm btn-success">Mark Complete</a>
                                     <?php else: ?>
-                                        <a href="orders_manage.php?uncomplete_id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">Mark Uncompleted</a>
+                                        <a href="orders_manage.php?uncomplete_id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">Mark Pending</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>
