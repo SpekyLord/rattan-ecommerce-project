@@ -1,7 +1,7 @@
 # 🇵🇭 Rattan E-Commerce Project
 
 ## 📋 Project Overview
-A Filipino culture-focused e-commerce website showcasing handcrafted rattan products with a complete admin dashboard for inventory management.
+A Filipino culture-focused e-commerce website showcasing handcrafted rattan products with a complete admin dashboard for inventory management. Test
 
 **Project Duration**: November 24 - December 5, 2024  
 **Team Size**: 5 members
