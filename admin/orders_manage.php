@@ -55,20 +55,22 @@ if (isset($_GET['status']) && $_GET['status'] !== "all") {
     $params[] = $status_filter;
 }
 
-// ---- FETCH ORDERS JOINED WITH PRODUCTS ----
+// ---- FETCH ORDERS WITH ITEMS ----
 $query = "SELECT 
             orders.id,
             orders.customer_name,
             orders.customer_email,
             orders.customer_phone,
-            orders.quantity,
             orders.status,
             orders.created_at,
-            products.name AS product_name,
-            products.price AS product_price
+            GROUP_CONCAT(products.name SEPARATOR ', ') AS product_names,
+            SUM(order_items.quantity) AS total_quantity,
+            SUM(order_items.quantity * order_items.price_at_time) AS total_amount
           FROM orders
-          LEFT JOIN products ON orders.product_id = products.id
+          LEFT JOIN order_items ON orders.id = order_items.order_id
+          LEFT JOIN products ON order_items.product_id = products.id
           $where
+          GROUP BY orders.id
           ORDER BY orders.created_at DESC, orders.id DESC";
 
 $stmt = $conn->prepare($query);
@@ -115,13 +117,13 @@ $result = $stmt->fetchAll();
                     <table class="table table-striped table-hover align-middle">
                         <thead class="table-dark">
                             <tr>
-                                <th>ID</th>
+                                <th>Order ID</th>
                                 <th>Date</th>
                                 <th>Customer Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Product</th>
-                                <th>Quantity</th>
+                                <th>Products</th>
+                                <th>Total Items</th>
                                 <th>Total Amount</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -130,7 +132,6 @@ $result = $stmt->fetchAll();
                         <tbody>
                         <?php if(count($result) > 0): ?>
                             <?php foreach ($result as $row): 
-                                $total_amount = $row['product_price'] * $row['quantity'];
                                 $status_class = $row['status'] == 'pending' ? 'badge bg-warning text-dark' : 'badge bg-success';
                                 $date_formatted = date('M d, Y', strtotime($row['created_at']));
                             ?>
@@ -140,9 +141,9 @@ $result = $stmt->fetchAll();
                                 <td><?= htmlspecialchars($row['customer_name']) ?></td>
                                 <td><?= htmlspecialchars($row['customer_email']) ?></td>
                                 <td><?= htmlspecialchars($row['customer_phone']) ?></td>
-                                <td><?= htmlspecialchars($row['product_name']) ?></td>
-                                <td><?= $row['quantity'] ?></td>
-                                <td>₱<?= number_format($total_amount, 2) ?></td>
+                                <td><?= htmlspecialchars($row['product_names'] ?? 'No products') ?></td>
+                                <td><?= $row['total_quantity'] ?? 0 ?></td>
+                                <td>₱<?= number_format($row['total_amount'] ?? 0, 2) ?></td>
                                 <td><span class="<?= $status_class ?>"><?= ucfirst($row['status']) ?></span></td>
                                 <td>
                                     <?php if ($row['status'] == "pending"): ?>
