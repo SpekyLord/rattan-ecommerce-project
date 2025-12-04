@@ -22,33 +22,24 @@ if (isset($_SESSION['last_activity']) &&
 
 $_SESSION['last_activity'] = time();
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "rattan_shop";
 
 require_once '../includes/db_connect.php';
 require_once '../includes/functions.php';
 
-// Database connection
-$conn = mysqli_connect($host, $user, $pass, $db);
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
 
 // ---- UPDATE STATUS ----
 if (isset($_GET['complete_id'])) {
     $id = intval($_GET['complete_id']);
-    $query = "UPDATE orders SET status = 'completed' WHERE id = $id";
-    mysqli_query($conn, $query);
+    $stmt = $conn->prepare("UPDATE orders SET status = 'completed' WHERE id = ?");
+    $stmt->execute([$id]);
     header("Location: orders_manage.php");
     exit;
 }
 
 if (isset($_GET['uncomplete_id'])) {
     $id = intval($_GET['uncomplete_id']);
-    $query = "UPDATE orders SET status = 'pending' WHERE id = $id";
-    mysqli_query($conn, $query);
+    $stmt = $conn->prepare("UPDATE orders SET status = 'pending' WHERE id = ?");
+    $stmt->execute([$id]);
     header("Location: orders_manage.php");
     exit;
 }
@@ -56,20 +47,33 @@ if (isset($_GET['uncomplete_id'])) {
 // ---- FILTERING ----
 $status_filter = "";
 $where = "";
+$params = [];
 
 if (isset($_GET['status']) && $_GET['status'] !== "all") {
-    $status_filter = mysqli_real_escape_string($conn, $_GET['status']);
-    $where = "WHERE orders.status = '$status_filter'";
+    $status_filter = $_GET['status'];
+    $where = "WHERE orders.status = ?";
+    $params[] = $status_filter;
 }
 
 // ---- FETCH ORDERS JOINED WITH PRODUCTS ----
-$query = "SELECT orders.*, products.name AS product_name, products.price AS product_price
+$query = "SELECT 
+            orders.id,
+            orders.customer_name,
+            orders.customer_email,
+            orders.customer_phone,
+            orders.quantity,
+            orders.status,
+            orders.created_at,
+            products.name AS product_name,
+            products.price AS product_price
           FROM orders
           LEFT JOIN products ON orders.product_id = products.id
           $where
-          ORDER BY orders.id DESC";
+          ORDER BY orders.created_at DESC, orders.id DESC";
 
-$result = mysqli_query($conn, $query);
+$stmt = $conn->prepare($query);
+$stmt->execute($params);
+$result = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -112,6 +116,7 @@ $result = mysqli_query($conn, $query);
                         <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
+                                <th>Date</th>
                                 <th>Customer Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -123,13 +128,15 @@ $result = mysqli_query($conn, $query);
                             </tr>
                         </thead>
                         <tbody>
-                        <?php if(mysqli_num_rows($result) > 0): ?>
-                            <?php while ($row = mysqli_fetch_assoc($result)) { 
+                        <?php if(count($result) > 0): ?>
+                            <?php foreach ($result as $row): 
                                 $total_amount = $row['product_price'] * $row['quantity'];
-                                $status_class = $row['status'] == 'pending' ? 'badge bg-warning' : 'badge bg-success';
+                                $status_class = $row['status'] == 'pending' ? 'badge bg-warning text-dark' : 'badge bg-success';
+                                $date_formatted = date('M d, Y', strtotime($row['created_at']));
                             ?>
                             <tr>
                                 <td><?= $row['id'] ?></td>
+                                <td><?= $date_formatted ?></td>
                                 <td><?= htmlspecialchars($row['customer_name']) ?></td>
                                 <td><?= htmlspecialchars($row['customer_email']) ?></td>
                                 <td><?= htmlspecialchars($row['customer_phone']) ?></td>
@@ -145,10 +152,10 @@ $result = mysqli_query($conn, $query);
                                     <?php endif; ?>
                                 </td>
                             </tr>
-                            <?php } ?>
+                            <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="9" class="text-center fst-italic text-muted">No orders found.</td>
+                                <td colspan="10" class="text-center fst-italic text-muted">No orders found.</td>
                             </tr>
                         <?php endif; ?>
                         </tbody>
