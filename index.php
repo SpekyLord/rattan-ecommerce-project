@@ -1,8 +1,8 @@
 <?php include 'includes/header.php'; ?>
 
 <!-- Hero Section -->
- <section class="hero"><
-    <div class="hero-section text-center py-5 bg-light">
+ <section class="hero">
+    <div class="hero-section text-center py-5">
         <h1>Authentic Filipino Rattan Products</h1>
         <p class="lead">Handcrafted with tradition, made with pride</p>
     </div>
