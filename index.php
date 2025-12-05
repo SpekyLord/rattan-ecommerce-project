@@ -1,10 +1,12 @@
 <?php include 'includes/header.php'; ?>
 
 <!-- Hero Section -->
-<div class="hero-section text-center py-5 bg-light">
-    <h1>Authentic Filipino Rattan Products</h1>
-    <p class="lead">Handcrafted with tradition, made with pride</p>
-</div>
+ <section class="hero"><
+    <div class="hero-section text-center py-5 bg-light">
+        <h1>Authentic Filipino Rattan Products</h1>
+        <p class="lead">Handcrafted with tradition, made with pride</p>
+    </div>
+ </section>
 
 <!-- Featured Products -->
 <div class="container my-5">

@@ -1,0 +1,26 @@
+.hero {
+    background-image: url(hero-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 120px 40px;
+    color:rgb(113, 45, 27)
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+}
