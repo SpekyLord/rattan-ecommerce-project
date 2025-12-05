@@ -1,7 +1,3 @@
-<?php 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -17,7 +13,7 @@
 
     <div class="category-filter">
         <select id="categorySelect">
-            <option value="All Categories"></option>
+            <option value="All Categories"></option>t add 
             <option value="Chairs"></option>
             <option value="Tables"></option>
             <option value="Decor"></option>
@@ -26,13 +22,22 @@
 </div>
 
     <div class="product-grid" id="productGrid">
-        <?php foreach ($ ass $p): ?>
+        <?php foreach ($ as $p): ?>
         <a href="product_detail.php?id=<?php= $p[ 'id' ] ?>" class="product card">
 
         <img src="<?$p[ 'id' ] ?>" alt="">
         <div class="product-name"><?php $p[ 'id' ] ?>" 
 
+        <?php if( $product['stock'] > 0 ): ?>
+            <span class="badge in-stock">In Stock</span>
+        <?php else: ?>
+            <span class="badge sold-out">Sold Out</span>
+        <?php endif; ?>
+        </a>
+        <?php endforeach; ?>
+        
     </div>
+</div>
 
 <script src= "assets/js/main.js"></script>
 </body>
