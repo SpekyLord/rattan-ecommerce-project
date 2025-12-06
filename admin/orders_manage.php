@@ -29,7 +29,7 @@ if (isset($_GET['complete_id'])) {
     $id = intval($_GET['complete_id']);
     $stmt = $conn->prepare("UPDATE orders SET status = 'completed' WHERE id = ?");
     $stmt->execute([$id]);
-    header("Location: orders_manage.php");
+    header("Location: orders_manage.php?success=completed");
     exit;
 }
 
@@ -37,7 +37,7 @@ if (isset($_GET['uncomplete_id'])) {
     $id = intval($_GET['uncomplete_id']);
     $stmt = $conn->prepare("UPDATE orders SET status = 'pending' WHERE id = ?");
     $stmt->execute([$id]);
-    header("Location: orders_manage.php");
+    header("Location: orders_manage.php?success=pending");
     exit;
 }
 
@@ -51,6 +51,9 @@ if (isset($_GET['status']) && $_GET['status'] !== "all") {
     $where = "WHERE orders.status = ?";
     $params[] = $status_filter;
 }
+
+// Success messages
+$success = isset($_GET['success']) ? $_GET['success'] : '';
 
 // ---- FETCH ORDERS ----
 $query = "SELECT 
@@ -85,6 +88,26 @@ $orders = $stmt->fetchAll();
         .order-items-list li {
             margin-bottom: 0.3rem;
         }
+        
+        /* Complete Modal Styling */
+        .complete-modal .modal-content {
+            border: 2px solid #198754;
+        }
+        
+        .complete-modal .modal-header {
+            background-color: #198754;
+            color: white;
+        }
+        
+        /* Pending Modal Styling */
+        .pending-modal .modal-content {
+            border: 2px solid #ffc107;
+        }
+        
+        .pending-modal .modal-header {
+            background-color: #ffc107;
+            color: #000;
+        }
     </style>
 </head>
 <body>
@@ -101,6 +124,18 @@ $orders = $stmt->fetchAll();
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h2>Customer Orders / Inquiries</h2>
                 </div>
+
+                <?php if ($success == 'completed'): ?>
+                    <div class="alert alert-success alert-dismissible fade show">
+                        ✓ Order marked as completed successfully!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                <?php elseif ($success == 'pending'): ?>
+                    <div class="alert alert-warning alert-dismissible fade show">
+                        ⏳ Order marked as pending successfully!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                <?php endif; ?>
 
                 <!-- FILTER -->
                 <form method="GET" class="mb-3 d-flex align-items-center gap-2">
@@ -212,17 +247,15 @@ $orders = $stmt->fetchAll();
                                             <!-- Actions -->
                                             <div class="mt-3">
                                                 <?php if ($order['status'] == "pending"): ?>
-                                                    <a href="orders_manage.php?complete_id=<?= $order['id'] ?>" 
-                                                       class="btn btn-success"
-                                                       onclick="return confirm('Mark this order as completed?')">
+                                                    <button class="btn btn-success" 
+                                                            onclick="openCompleteModal(<?= $order['id'] ?>, '<?= htmlspecialchars($order['customer_name'], ENT_QUOTES) ?>')">
                                                         ✓ Mark as Completed
-                                                    </a>
+                                                    </button>
                                                 <?php else: ?>
-                                                    <a href="orders_manage.php?uncomplete_id=<?= $order['id'] ?>" 
-                                                       class="btn btn-warning"
-                                                       onclick="return confirm('Mark this order as pending?')">
-                                                        ← Mark as Pending
-                                                    </a>
+                                                    <button class="btn btn-warning" 
+                                                            onclick="openPendingModal(<?= $order['id'] ?>, '<?= htmlspecialchars($order['customer_name'], ENT_QUOTES) ?>')">
+                                                        ⏳ Mark as Pending
+                                                    </button>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -242,6 +275,75 @@ $orders = $stmt->fetchAll();
         </div>
     </div>
 
+    <!-- Mark as Completed Modal -->
+    <div class="modal fade complete-modal" id="completeOrderModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">✓ Mark Order as Completed</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-2">Are you sure you want to mark this order as completed?</p>
+                    <p class="fw-bold mb-1">Order #<span id="complete_order_id"></span></p>
+                    <p class="text-muted mb-0">Customer: <span id="complete_customer_name"></span></p>
+                    <div class="alert alert-success mt-3 mb-0">
+                        <small>✓ This will indicate the order has been fulfilled and delivered.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="#" id="confirm_complete_btn" class="btn btn-success">Mark as Completed</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mark as Pending Modal -->
+    <div class="modal fade pending-modal" id="pendingOrderModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">⏳ Mark Order as Pending</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-2">Are you sure you want to mark this order as pending?</p>
+                    <p class="fw-bold mb-1">Order #<span id="pending_order_id"></span></p>
+                    <p class="text-muted mb-0">Customer: <span id="pending_customer_name"></span></p>
+                    <div class="alert alert-warning mt-3 mb-0">
+                        <small>⏳ This will revert the order status back to pending/in progress.</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="#" id="confirm_pending_btn" class="btn btn-warning">Mark as Pending</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Open Complete Modal
+        function openCompleteModal(orderId, customerName) {
+            document.getElementById('complete_order_id').textContent = orderId;
+            document.getElementById('complete_customer_name').textContent = customerName;
+            document.getElementById('confirm_complete_btn').href = 'orders_manage.php?complete_id=' + orderId;
+            
+            const modal = new bootstrap.Modal(document.getElementById('completeOrderModal'));
+            modal.show();
+        }
+
+        // Open Pending Modal
+        function openPendingModal(orderId, customerName) {
+            document.getElementById('pending_order_id').textContent = orderId;
+            document.getElementById('pending_customer_name').textContent = customerName;
+            document.getElementById('confirm_pending_btn').href = 'orders_manage.php?uncomplete_id=' + orderId;
+            
+            const modal = new bootstrap.Modal(document.getElementById('pendingOrderModal'));
+            modal.show();
+        }
+    </script>
 </body>
 </html>
