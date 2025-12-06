@@ -7,6 +7,20 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit;
 }
 
+// Session timeout after 15 minutes of inactivity
+$expireAfter = 15 * 60;
+
+if (isset($_SESSION['last_activity']) &&
+    (time() - $_SESSION['last_activity']) > $expireAfter)
+{
+    session_unset();
+    session_destroy();
+    header("Location: login.php?message=Session expired. Please log in again.");
+    exit;
+}
+
+$_SESSION['last_activity'] = time();
+
 require_once '../includes/db_connect.php';
 
 // Get statistics
