@@ -25,12 +25,25 @@ CREATE TABLE admin_users (
 -- Orders/Inquiries Table
 CREATE TABLE orders (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id INT,
     customer_name VARCHAR(100),
     customer_email VARCHAR(100),
     customer_phone VARCHAR(20),
-    quantity INT,
     status VARCHAR(50) DEFAULT 'pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Order Items Table
+CREATE TABLE order_items (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price_at_time DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
+-- Indexes for better performance
+CREATE INDEX idx_order_status ON orders(status);
+CREATE INDEX idx_order_items_order_id ON order_items(order_id);
+CREATE INDEX idx_order_items_product_id ON order_items(product_id);
