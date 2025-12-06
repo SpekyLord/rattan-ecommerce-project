@@ -23,7 +23,7 @@
 
     <div class="product-grid" id="productGrid">
         <?php foreach ($products as $p): ?>
-        <a href="product_detail.php?id=<?php= $p[ 'id' ] ?>" class="product card">
+        <a href="product_detail.php?id=<?php $p[ 'id' ] ?>" class="product card">
 
         <img src="<?$p[ 'id' ] ?>" alt="">
         <div class="product-name"><?php $p[ 'id' ] ?>" 

@@ -13,15 +13,15 @@
 
         <div class="Image-gallery">
             <img id="MainImage">
-                src="<? $product [ 'image' ]" ?>"
+                src="<? $product [ 'image' ] ?>"
                 class="main-image zoomable">
 
-            <div class="thumbnail=row">
-                <?php foreach ($product['gallery'] as $img): ?>
-                    <img src="<?= $img ?>" class="thumbnail">
-                <? php endforeach; ?>
-            </div>                   
+                <div class="thumbnail=row">
+        <?php foreach ($product['gallery'] as $img): ?>
+        <img src="<?= $img ?>" class="thumbnail">
+            <?php endforeach; ?>
         </div>
+
     
         <div class="product-info">
             <h2><?= $product['name'] ?></h2>
