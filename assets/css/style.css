@@ -147,3 +147,59 @@
         font-size: 1.7rem;
     }
 }
+
+.card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transform: all 0.25 ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.card-img-top {
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #423328;
+    margin-bottom: 6px;
+}
+
+.card-text {
+    font-size: 1.05rem;
+    color: #8a6e58;
+    margin-bottom: 6px;
+}
+
+.badge {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+}
+
+.bg-success {
+    background-color: #7aa673 !important;
+}
+
+.bg-danger {
+    background-color: #c2786a !important;
+}
+
+#featured-products .col-md-4 {
+    padding: 12px;
+}
