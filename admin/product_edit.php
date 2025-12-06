@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // If uploading a NEW image
     if (!empty($_FILES['image']['name'])) {
         $new_image = time() . "_" . basename($_FILES['image']['name']);
-        move_uploaded_file($_FILES['image']['tmp_name'], "../assets/images/" . $new_image);
+        move_uploaded_file($_FILES['image']['tmp_name'], "../assets/images/products/" . $new_image);
         $image_path = $new_image;
     }
 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     Current Image:<br>
     <?php if ($product['image_path']): ?>
-        <img src="../assets/images/<?= $product['image_path'] ?>" width="120"><br><br>
+        <img src="../assets/images/products/<?= $product['image_path'] ?>" width="120"><br><br>
     <?php endif; ?>
 
     Upload New Image: <input type="file" name="image"><br><br>

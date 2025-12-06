@@ -191,7 +191,7 @@ $orders = $stmt->fetchAll();
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex align-items-center gap-2">
-                                                                <img src="../assets/images/<?= htmlspecialchars($item['image_path']) ?>" 
+                                                                <img src="../assets/images/products/<?= htmlspecialchars($item['image_path']) ?>" 
                                                                      alt="Product" 
                                                                      style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
                                                                 <?= htmlspecialchars($item['name']) ?>

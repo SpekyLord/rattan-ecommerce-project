@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $image_path = null;
         if (!empty($_FILES['image']['name'])) {
             $image_name = time() . "_" . basename($_FILES['image']['name']);
-            $target = "../assets/images/" . $image_name;
+            $target = "../assets/images/products/" . $image_name;
             move_uploaded_file($_FILES['image']['tmp_name'], $target);
             $image_path = $image_name;
         }
