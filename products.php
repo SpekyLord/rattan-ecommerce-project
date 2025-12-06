@@ -22,7 +22,7 @@
 </div>
 
     <div class="product-grid" id="productGrid">
-        <?php foreach ($ as $p): ?>
+        <?php foreach ($products as $p): ?>
         <a href="product_detail.php?id=<?php= $p[ 'id' ] ?>" class="product card">
 
         <img src="<?$p[ 'id' ] ?>" alt="">
@@ -35,10 +35,11 @@
         <?php endif; ?>
         </a>
         <?php endforeach; ?>
-        
+
     </div>
 </div>
 
 <script src= "assets/js/main.js"></script>
 </body>
+<?php include 'includes/footer.php'; ?> 
 </html>
