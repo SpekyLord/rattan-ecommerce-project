@@ -23,7 +23,7 @@
         ?>
         <div class="col-md-4 mb-4">
             <div class="card">
-                <img src="<?= htmlspecialchars($product['image_path']) ?>" 
+                <img src="assets/images/products/<?= htmlspecialchars($product['image_path']) ?>" 
                      class="card-img-top" alt="<?= htmlspecialchars($product['name']) ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
