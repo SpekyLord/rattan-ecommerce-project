@@ -43,24 +43,37 @@ rattan-ecommerce-project/
 ├── products.php
 ├── product_detail.php
 ├── about.php
+├── contact.php
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── images/
+│       ├── bgs/
+│       └── products/
 ├── admin/
 │   ├── login.php
+│   ├── logout.php
 │   ├── dashboard.php
+│   ├── navbar.php
+│   ├── sidebar.php
 │   ├── products_manage.php
-│   └── orders_manage.php
+│   ├── orders_manage.php
+│   ├── product_add.php
+│   ├── product_delete.php
 ├── includes/
 │   ├── db_connect.php
 │   ├── header.php
 │   ├── footer.php
 │   └── functions.php
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
 ├── config/
 │   └── db_config.php
-└── database/
-    └── schema.sql
+├── database/
+│   └── schema.sql
+├── .gitignore
+└── README.md
+
 ```
 
 ---
