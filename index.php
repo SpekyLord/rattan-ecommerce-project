@@ -1,12 +1,41 @@
 <?php include 'includes/header.php'; ?>
 
-<!-- Hero Section -->
- <section class="hero">
-    <div class="hero-section text-center py-5">
-        <h1>Authentic Filipino Rattan Products</h1>
-        <p class="lead">Handcrafted with tradition, made with pride</p>
+<!-- Enhanced Hero Section with Parallax -->
+<section class="hero">
+    <!-- Parallax Background -->
+    <div class="hero-bg" id="heroBg"></div>
+    
+    <!-- Gradient Overlay -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Animated Pattern -->
+    <div class="hero-pattern"></div>
+    
+    <!-- Floating Shapes -->
+    <div class="hero-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
- </section>
+    
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h1>
+            Authentic Filipino Rattan Products
+            <span>Handcrafted with tradition, made with pride</span>
+        </h1>
+        
+        <p>
+            Discover the beauty of traditional Filipino craftsmanship.<br>
+            Each piece tells a story of heritage and artistry.
+        </p>
+        
+        <div class="hero-buttons">
+            <a href="products.php" class="hero-btn hero-btn-primary">Shop Collection</a>
+            <a href="about.php" class="hero-btn hero-btn-secondary">Our Story</a>
+        </div>
+    </div>
+</section>
 
 <!-- Featured Products -->
 <div class="container my-5">
