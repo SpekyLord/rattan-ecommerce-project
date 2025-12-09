@@ -21,6 +21,7 @@ try {
     $conn = new PDO($dsn, DB_USER, DB_PASS, $options);
     
 } catch(PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    error_log("Database connection failed: " . $e->getMessage());
+        die("A system error occurred. Please contact support.");
 }
 ?>

@@ -14,6 +14,12 @@ function getProductById($conn, $id) {
 }
 
 function addProduct($conn, $data) {
+    if ($data['price'] <= 0) {
+        throw new Exception('Price must be positive');
+    }
+    if ($data['stock'] < 0) {
+        throw new Exception('Stock cannot be negative');
+    }
     $stmt = $conn->prepare(
         "INSERT INTO products (name, description, price, stock, category, image_path) 
          VALUES (?, ?, ?, ?, ?, ?)"
