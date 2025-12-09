@@ -17,7 +17,7 @@
         require_once 'includes/functions.php';
         
         $products = getAllProducts($conn);
-        $featured = array_slice($products, 0, 9); // Show first 6
+        $featured = array_slice($products, 0, 3); 
         
         foreach ($featured as $product):
         ?>
