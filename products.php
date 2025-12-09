@@ -24,55 +24,55 @@ if (!empty($search)) {
     $products = getAllProducts($conn);
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products - Sophee's Home Decors</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<div class="container my-5">
+<div class="container my-5 products-page">
 
     <h1 class="text-center mb-4">All Rattan Products</h1>
 
     <!-- Search + Category Filters -->
-    <div class="row mb-4">
+    <!-- Search + Category Filters -->
+<div class="row mb-4">
+  <div class="col-md-6 mb-3">
+    <form method="GET" class="custom-search-form">
+      <div class="search-bar">
+        <input
+          type="text"
+          name="search"
+          class="search-input"
+          placeholder="Search products..."
+          value="<?= htmlspecialchars($search) ?>">
 
-        <div class="col-md-6 mb-3">
-            <form method="GET">
-                <div class="input-group">
-                    <input type="text" 
-                           name="search" 
-                           class="form-control" 
-                           placeholder="Search products..."
-                           value="<?= htmlspecialchars($search) ?>">
+        <button type="submit" class="search-btn">Search</button>
 
-                    <button class="btn btn-primary" type="submit">Search</button>
+        <?php if ($search): ?>
+          <a href="products.php" class="clear-btn">Clear</a>
+        <?php endif; ?>
+      </div>
+    </form>
+  </div>
 
-                    <?php if ($search): ?>
-                        <a href="products.php" class="btn btn-secondary">Clear</a>
-                    <?php endif; ?>
-                </div>
-            </form>
-        </div>
+  <div class="col-md-6 mb-3">
+  <form method="GET" class="custom-category-form" onsubmit="return false;">
+  <div class="custom-select-wrapper">
+      <div class="custom-select-trigger" id="custom-select-trigger" tabindex="0">
+          <span id="selected-text"><?= htmlspecialchars($category ?? 'All Categories') ?></span>
+          <svg class="arrow" fill="gray" height="24" width="24" viewBox="0 0 24 24">
+              <path d="M7 10l5 5 5-5z"/>
+          </svg>
+      </div>
+      <ul class="custom-options" id="custom-options">
+          <li class="option" data-value="All Categories">All Categories</li>
+          <li class="option" data-value="Storage">Storage</li>
+          <li class="option" data-value="Kitchen">Kitchen</li>
+          <li class="option" data-value="Home Decor">Home Decor</li>
+          <li class="option" data-value="Furniture">Furniture</li>
+      </ul>
+      <input type="hidden" name="category" id="category-input" value="<?= htmlspecialchars($category ?? 'All Categories') ?>">
+  </div>
+</form>
 
-        <div class="col-md-6 mb-3">
-            <form method="GET">
-                <select name="category" class="form-select" onchange="this.form.submit()">
-                    <option value="All Categories">All Categories</option>
-                    <option value="Storage" <?= $category==='Storage' ? 'selected' : '' ?>>Storage</option>
-                    <option value="Kitchen" <?= $category==='Kitchen' ? 'selected' : '' ?>>Kitchen</option>
-                    <option value="Home Decor" <?= $category==='Home Decor' ? 'selected' : '' ?>>Home Decor</option>
-                    <option value="Furniture" <?= $category==='Furniture' ? 'selected' : '' ?>>Furniture</option>
-                </select>
-            </form>
-        </div>
-    </div>
+</div>
+</div>
+
 
     
     <div class="row">
