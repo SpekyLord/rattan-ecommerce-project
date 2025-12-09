@@ -1,4 +1,4 @@
-<footer class="bg-dark text-white text-center py-4 mt-auto">
+<footer class="text-white text-center py-4 mt-auto bg-custom">
         <p class="mb-0">2025 Filipino Rattan Crafts - Promoting Traditional Craftsmanship</p>
     </footer>
     

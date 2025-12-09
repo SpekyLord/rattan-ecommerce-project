@@ -205,3 +205,29 @@
 #featured-products .col-md-4 {
     padding: 12px;
 }
+.bg-custom {
+    background-color: #754A39;
+}
+
+/* Custom navbar color */
+/* Custom navbar color */
+.navbar.bg-dark {
+    background-color: #967162 !important;
+}
+
+/* Navbar font and text color */
+.navbar {
+    font-family: 'RocknRoll One', sans-serif !important;
+}
+
+.navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFFFFF !important;
+    font-family: 'RocknRoll One', sans-serif !important;
+}
+
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    opacity: 0.8;
+}
