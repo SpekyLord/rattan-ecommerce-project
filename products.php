@@ -112,11 +112,12 @@ if (!empty($search)) {
 
         <?php else: ?>
             <div class="col-12">
-                <div class="alert alert-info text-center">
-                    <h4>No products found</h4>
-                    <a href="products.php" class="btn btn-primary mt-2">View All Products</a>
-                </div>
-            </div>
+    <div class="empty-alert">
+        <h4>No products found</h4>
+        <a href="products.php" class="btn">View All Products</a>
+    </div>
+</div>
+
         <?php endif; ?>
 
     </div>
