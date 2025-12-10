@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-md-5">
                 <div class="card shadow">
                     <div class="card-body p-5">
-                        <h2 class="text-center mb-4">🇵🇭 Admin Login</h2>
+                        <h2 class="text-center mb-4">Admin Login</h2>
                         <h5 class="text-center text-muted mb-4">Rattan Crafts Management</h5>
                         
                         <?php if ($error): ?>
