@@ -140,7 +140,7 @@ if (!$product) {
 </div>
 
 </main>
-
+<?php include 'contact.php'; ?>
 <?php include 'includes/footer.php'; ?>
 
 </body>

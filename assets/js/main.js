@@ -96,27 +96,6 @@ function decrementQty() {
     }
 }
 
-// ==================== ADD TO CART (PLACEHOLDER) ====================
-function addToCart() {
-    const qtyInput = document.getElementById('quantity');
-    const productTitle = document.querySelector('.product-title');
-    
-    if (qtyInput && productTitle) {
-        const quantity = qtyInput.value;
-        const productName = productTitle.textContent;
-        
-        // Show success message (you can replace this with actual cart logic)
-        alert(`Added ${quantity}x "${productName}" to cart!\n\nNote: This is a demo. Implement actual cart functionality here.`);
-        
-        // TODO: Implement actual cart functionality
-        // Example:
-        // - Save to localStorage
-        // - Update cart count in navbar
-        // - Show cart modal
-        // - Send AJAX request to server
-    }
-}
-
 // ==================== SMOOTH SCROLL FOR ANCHOR LINKS ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

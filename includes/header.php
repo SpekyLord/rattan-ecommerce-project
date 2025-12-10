@@ -24,10 +24,11 @@
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="admin/login.php">Admin</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     <main class="flex-fill">
