@@ -6,8 +6,8 @@
     <section class="about-hero" 
         style="background-image: url('https://img.freepik.com/premium-photo/detailed-shot-tube-shaped-rattan-plait-pattern_410516-59170.jpg?w=2000');">
         <div class="hero-content">
-            <h1>Rattan Craftsmanship of Iloilo</h1>
-            <p>A celebration of Filipino weaving, heritage, and everyday artistry.</p>
+            <h1>Filipino Rattan Craftsmanship</h1>
+            <p>A celebration of traditional Filipino weaving, heritage, and everyday artistry.</p>
         </div>
     </section>
 
@@ -15,23 +15,23 @@
     <!-- SECTION 1 -->
     <section class="about-section">
         <div class="about-text">
-            <h2>The Heart of Iloilo’s Rattan Tradition</h2>
+            <h2>The Heart of Philippine Rattan Tradition</h2>
             <p>
-                Iloilo has long been a hub for skilled artisans who weave rattan into functional,
-                durable, and beautiful creations. In small towns and coastal communities, weaving has
-                been passed down through generations — not just as a livelihood, but as a cultural
-                expression that shapes local identity.
+                The Philippines has long been renowned for skilled artisans who weave rattan into functional,
+                durable, and beautiful creations. Across the archipelago, from mountainous regions to coastal
+                communities, weaving has been passed down through generations, not just as a livelihood, 
+                but as a cultural expression that shapes Filipino identity.
             </p>
             <p>
-                Rattan, locally sourced and highly sustainable, thrives in the Philippine environment.
-                Its flexibility and strength allow Ilonggo artisans to craft baskets, bags, trays,
+                Rattan, locally sourced and highly sustainable, thrives naturally in the Philippine environment.
+                Its flexibility and strength allow Filipino artisans to craft baskets, bags, trays,
                 chairs, and intricate home décor. Each piece reflects hours of handwork,
                 craftsmanship, and deep respect for materials from the land.
             </p>
         </div>
 
         <div class="about-image">
-            <img src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t39.30808-6/487980770_1063153115834049_188978626186121453_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG3SYLEYYG24ha2kHljsoAwOyloQNSKCiM7KWhA1IoKIwcycYo9-33g8BbL1GVr9l18tZshKRmL16P0cmvzeCGc&_nc_ohc=2UwCsYsfcRMQ7kNvwH22Z-9&_nc_oc=AdlPWTruzqqN1RBLlDVHVXlOQWRm5W40csi9ogUEHXCrpdn1j7HXyeB0cti9jz4PmLI&_nc_zt=23&_nc_ht=scontent.fmnl9-4.fna&_nc_gid=M23lIRkwfxHyAFZbqmFPyg&oh=00_Afkid_mRApGj8xo3_qyvMCGUzRiKP28qMeYeFGtWX45ecQ&oe=693709FF" 
+            <img src="assets/images/bgs/rattan.jpg" 
                  alt="Rattan baskets and woven products">
         </div>
     </section>
@@ -40,17 +40,19 @@
     <!-- SECTION 2 -->
     <section class="about-section reverse">
         <div class="about-text">
-            <h2>More Than Craft — A Living Heritage</h2>
+            <h2>More Than Craft: A Living Heritage</h2>
             <p>
-                For many families in Iloilo, rattan weaving connects them to their ancestors. Patterns
+                For many Filipino families, rattan weaving connects them to their ancestors. Patterns
                 and techniques are often inherited, taught informally within households or community
-                workshops. These designs carry stories — of festivals, trade routes, resilience, and
-                local pride.
+                workshops. These designs carry stories of festivals, regional traditions, resilience, 
+                and cultural pride that span generations.
             </p>
             <p>
-                The Philippines, known worldwide for its weaving traditions, recognizes rattan craft
-                as part of our broader cultural tapestry. It represents ingenuity: transforming natural
-                fibers into pieces that serve everyday life, from traditional markets to modern homes.
+                The Philippines, recognized worldwide for its weaving traditions, celebrates rattan craft
+                as part of our broader cultural tapestry. Different regions bring their unique styles:
+                Ifugao's intricate patterns, Pampanga's refined techniques, and Cebu's innovative designs.
+                This diversity represents Filipino ingenuity: transforming natural fibers into pieces 
+                that serve everyday life, from traditional markets to modern homes.
             </p>
         </div>
 
@@ -64,17 +66,25 @@
     <!-- SECTION 3 -->
     <section class="about-section">
         <div class="about-text">
-            <h2>Supporting Local Communities</h2>
+            <h2>Supporting Filipino Artisan Communities</h2>
             <p>
-                When people choose locally crafted rattan products, they support Ilonggo artisans
-                directly. This sustains weaving traditions, preserves the livelihood of rural
-                communities, and promotes eco-friendly production.
+                When people choose authentic Filipino rattan products, they support local artisans
+                and their families directly. This sustains centuries-old weaving traditions, 
+                preserves the livelihood of communities across the Philippines, and promotes 
+                eco-friendly, sustainable production methods.
             </p>
             <p>
-                Rattan craft embodies Filipino values: resourcefulness, beauty, and strong community
-                roots. Every woven piece is more than an object — it is the story of the hands that
-                made it.
+                Rattan craft embodies core Filipino values: resourcefulness, bayanihan (community spirit),
+                creativity, and malasakit (compassion). Every woven piece is more than an object. 
+                It carries the dedication, skill, and cultural heritage of the Filipino artisan who created it.
+                By celebrating these crafts, we preserve our identity and support sustainable practices 
+                rooted in Filipino tradition.
             </p>
+        </div>
+
+        <div class="about-image">
+            <img src="https://oxfam.org.ph/wp-content/uploads/2023/03/XBS126-1024x683.jpg" 
+                 alt="Traditional Filipino rattan crafts">
         </div>
     </section>
 
