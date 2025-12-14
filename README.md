@@ -219,7 +219,6 @@ define('DB_PASS', 'your-secure-aiven-password');
 ## 👥 Meet the Team
 
 ### Project Manager / Full Stack Developer
-<img src="assets/images/bgs/admin_dashboard.png" alt="Admin Dashboard" width="600">
 
 **Francis Gabriel Austria** - Team Lead & Full Stack
 - Project architecture and planning
@@ -232,37 +231,28 @@ define('DB_PASS', 'your-secure-aiven-password');
 ---
 
 ### Frontend Development Team
-<img src="assets/images/bgs/Home_page.png" alt="Homepage Design" width="600">
 
 **Lorin Mikaela Amaller Sernicula** - Frontend Developer
 - Product catalog page development
-- Search and filter functionality
-- User interface components
 
-<img src="assets/images/bgs/products_section.png" alt="Products Section" width="600">
 
 **Mikay Cruz** - Frontend Developer
 - Homepage design and hero section
 - Product card design and layout
-- Responsive styling
 
 ---
 
 ### Backend Development Team
-<img src="assets/images/bgs/admin_login.png" alt="Admin Login System" width="600">
 
 **Ace Camariosa** - Backend Developer
-- Database schema design
-- Admin authentication system
-- Image upload system with validation
+- Image upload system
 - Product CRUD operations
 
-<img src="assets/images/bgs/admin_manage_orders.png" alt="Order Management" width="600">
+
 
 **Lucky Rey Tumbokon** - Backend Developer
 - Session security implementation (15-min timeout)
 - Order management system
-- Database optimization and indexing
 
 ---
 
